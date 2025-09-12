@@ -56,7 +56,9 @@ public class DashboardSteps {
 	public void eu_sou_autenticado_com_sucesso() {
 		driver.findElement(By.cssSelector("li.oxd-userdropdown"));
 		String urlAtual = driver.getCurrentUrl();
-		assertEquals("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index", urlAtual);	
+		assertEquals("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index", urlAtual);
+		
+		ScreenshotHelper.captureScreenshot(driver, "Screenshot - Autenticação bem-sucedida");
 	}
 
 	@Dado("que estou na página de dashboard")
@@ -88,7 +90,7 @@ public class DashboardSteps {
         		)
 		);
         
-		ScreenshotHelper.captureScreenshot(driver, "Acesso ao dashboard principal");
+		ScreenshotHelper.captureScreenshot(driver, "Screenshot - Acesso ao dashboard principal");
 	}
 
 	@Quando("acesso a opção de visualizar reviews de performance pendentes")
@@ -104,5 +106,7 @@ public class DashboardSteps {
 	public void o_sistema_exibe_ao_menos_um_review_de_performance_pendente() {
 		List<WebElement> rows = driver.findElements(By.cssSelector("div.oxd-table-row--clickable"));
 		assertTrue("No clickable table rows found", !rows.isEmpty());
+		
+		ScreenshotHelper.captureScreenshot(driver, "Screenshot - Reviews de performance pendentes");
 	}
 }
