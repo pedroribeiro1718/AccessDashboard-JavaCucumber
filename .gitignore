@@ -1,0 +1,40 @@
+# ---- Eclipse specific ----
+.project
+.classpath
+.settings/
+bin/
+
+# ---- Maven ----
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+release.properties
+dependency-reduced-pom.xml
+
+# ---- Logs & reports ----
+*.log
+*.tmp
+*.out
+*.err
+
+# Cucumber reports
+cucumber-report.json
+cucumber-report.xml
+cucumber-report.html
+cucumber-reports/
+rerun.txt
+
+# JUnit / Maven Surefire & Failsafe reports
+surefire-reports/
+failsafe-reports/
+TEST-*.xml
+
+# ---- OS cruft ----
+.DS_Store
+Thumbs.db
+
+# ---- Editor / IDE caches ----
+.vscode/
+*.swp
+*.swo
