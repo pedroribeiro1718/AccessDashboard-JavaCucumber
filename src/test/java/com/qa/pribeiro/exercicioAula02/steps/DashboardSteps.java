@@ -2,6 +2,7 @@ package com.qa.pribeiro.exercicioAula02.steps;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -26,8 +27,8 @@ public class DashboardSteps {
 	public void que_estou_na_página_de_login_do_sistema() {
 		
 		driver = new ChromeDriver();
-		driver.manage().window().maximize();
 	    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+		driver.manage().window().maximize();
 		driver.navigate().to("https://opensource-demo.orangehrmlive.com");
 	}
 
@@ -90,15 +91,18 @@ public class DashboardSteps {
 		ScreenshotHelper.captureScreenshot(driver, "Acesso ao dashboard principal");
 	}
 
-	@Quando("acesso a opção de visualizar ações pendentes")
-	public void acesso_a_opção_de_visualizar_ações_pendentes() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	@Quando("acesso a opção de visualizar reviews de performance pendentes")
+	public void acesso_a_opção_de_visualizar_reviews_de_performance_pendentes() {
+		WebElement link = driver.findElement(By.xpath(
+			    "//div[contains(@class,'orangehrm-todo-list-item')]"
+			    + "[.//p[contains(normalize-space(.),'Pending Self Review')]]"
+			));
+		link.click();
 	}
 
-	@Então("o sistema exibe uma lista de ações pendentes")
-	public void o_sistema_exibe_uma_lista_de_ações_pendentes() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	@Então("o sistema exibe ao menos um review de performance pendente")
+	public void o_sistema_exibe_ao_menos_um_review_de_performance_pendente() {
+		List<WebElement> rows = driver.findElements(By.cssSelector("div.oxd-table-row--clickable"));
+		assertTrue("No clickable table rows found", !rows.isEmpty());
 	}
 }

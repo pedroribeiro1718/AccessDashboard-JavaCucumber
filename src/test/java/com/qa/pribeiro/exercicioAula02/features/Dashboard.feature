@@ -18,5 +18,5 @@ Cenário: Acesso ao dashboard principal
 	
 Cenário: Visualizar ações pendentes no dashboard
 	Dado que estou na página de dashboard
-	Quando acesso a opção de visualizar ações pendentes
-	Então o sistema exibe uma lista de ações pendentes
+	Quando acesso a opção de visualizar reviews de performance pendentes
+	Então o sistema exibe ao menos um review de performance pendente
