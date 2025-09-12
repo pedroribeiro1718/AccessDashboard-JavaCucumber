@@ -13,4 +13,4 @@ It showcases the following techniques:
 ## Authorship
 
 - Uses https://opensource-demo.orangehrmlive.com as a testing playground
-- Developed in collaboration with [Coti Informática])(http://cotiinformatica.com.br)
+- Developed in collaboration with [Coti Informática](http://cotiinformatica.com.br)
