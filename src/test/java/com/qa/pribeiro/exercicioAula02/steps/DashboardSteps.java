@@ -2,7 +2,6 @@ package com.qa.pribeiro.exercicioAula02.steps;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -96,8 +95,7 @@ public class DashboardSteps {
 	@Quando("acesso a opção de visualizar reviews de performance pendentes")
 	public void acesso_a_opção_de_visualizar_reviews_de_performance_pendentes() {
 		WebElement link = driver.findElement(By.xpath(
-			    "//div[contains(@class,'orangehrm-todo-list-item')]"
-			    + "[.//p[contains(normalize-space(.),'Pending Self Review')]]"
+			    "//div[contains(@class,'orangehrm-todo-list-item')]" + "[.//p[contains(normalize-space(.),'Pending Self Review')]]"
 			));
 		link.click();
 	}
