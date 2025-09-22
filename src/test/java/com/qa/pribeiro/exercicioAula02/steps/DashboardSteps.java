@@ -33,7 +33,7 @@ public class DashboardSteps {
        	options.addArguments("--disable-dev-shm-usage"); // necessário em CI/Linux
        	options.addArguments("--remote-allow-origins=*");
        	
-		// Abrir o mavegador
+		// Abrir o navegador
 		driver = new ChromeDriver(options);
 	    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 		driver.manage().window().maximize();
