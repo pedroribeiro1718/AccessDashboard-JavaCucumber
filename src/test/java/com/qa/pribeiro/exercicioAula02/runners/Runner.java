@@ -7,7 +7,12 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
 		features = "src/test/java/com/qa/pribeiro/exercicioAula02/features",
 		glue = "com.qa.pribeiro.exercicioAula02.steps",
-		plugin = { "pretty", "html:target/cucumber-report.html" }
+		plugin = {
+	        "pretty",
+	        "html:target/cucumber-reports/cucumber-report.html",
+	        "json:target/cucumber-reports/cucumber-report.json",
+	        "junit:target/cucumber-reports/cucumber-report.xml"
+			}
 		)
 public class Runner {
 	

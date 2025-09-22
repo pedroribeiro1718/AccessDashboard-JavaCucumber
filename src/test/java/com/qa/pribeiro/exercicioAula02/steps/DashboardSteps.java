@@ -10,6 +10,9 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.qa.pribeiro.exercicioAula02.helpers.ScreenshotHelper;
 
@@ -25,7 +28,16 @@ public class DashboardSteps {
 	@Dado("que estou na página de login do sistema")
 	public void que_estou_na_página_de_login_do_sistema() {
 		
-		driver = new ChromeDriver();
+		//Configuração para execução dos testes em modo headless
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--headless"); // necessário em CI
+       	options.addArguments("--no-sandbox"); // necessário em GitHub Actions
+       	options.addArguments("--disable-dev-shm-usage"); // necessário em CI/Linux
+       	options.addArguments("--remote-allow-origins=*");
+       	options.addArguments("--window-size=1920,1080");
+		
+		//abrir o mavegador
+		driver = new ChromeDriver(options);
 	    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 		driver.manage().window().maximize();
 		driver.navigate().to("https://opensource-demo.orangehrmlive.com");
@@ -62,8 +74,9 @@ public class DashboardSteps {
 
 	@Dado("que estou na página de dashboard")
 	public void que_estou_na_página_de_dashboard() {
-		WebElement element = driver.findElement(By.cssSelector("a.oxd-main-menu-item[href='/web/index.php/dashboard/index']"));
-		element.click();
+		driver.navigate().to("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index");
+		String urlAtual = driver.getCurrentUrl();
+		assertEquals("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index", urlAtual);
 	}
 
 	@Então("o sistema exibe os indicadores principais da aplicação")
