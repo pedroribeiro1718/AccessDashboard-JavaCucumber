@@ -26,15 +26,14 @@ public class DashboardSteps {
 	@Dado("que estou na página de login do sistema")
 	public void que_estou_na_página_de_login_do_sistema() {
 		
-		//Configuração para execução dos testes em modo headless
+		// Configuração para execução dos testes em modo headless
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--headless"); // necessário em CI
        	options.addArguments("--no-sandbox"); // necessário em GitHub Actions
        	options.addArguments("--disable-dev-shm-usage"); // necessário em CI/Linux
        	options.addArguments("--remote-allow-origins=*");
-       	options.addArguments("--window-size=1920,1080");
-		
-		//abrir o mavegador
+       	
+		// Abrir o mavegador
 		driver = new ChromeDriver(options);
 	    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 		driver.manage().window().maximize();
@@ -66,7 +65,6 @@ public class DashboardSteps {
 		driver.findElement(By.cssSelector("li.oxd-userdropdown"));
 		String urlAtual = driver.getCurrentUrl();
 		assertEquals("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index", urlAtual);
-		
 		ScreenshotHelper.captureScreenshot(driver, "Screenshot - Autenticação bem-sucedida");
 	}
 
@@ -115,7 +113,6 @@ public class DashboardSteps {
 	public void o_sistema_exibe_ao_menos_um_review_de_performance_pendente() {
 		List<WebElement> rows = driver.findElements(By.cssSelector("div.oxd-table-row--clickable"));
 		assertTrue("No clickable table rows found", !rows.isEmpty());
-		
 		ScreenshotHelper.captureScreenshot(driver, "Screenshot - Reviews de performance pendentes");
 	}
 }
